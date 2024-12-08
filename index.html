@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Weather">
+  <link rel="icon" href="./img/disaster.png">
+  <title>Weather</title>
+  <base href="./index.html">
+  <meta name="description" content="">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="./css/bootstrap.min.css">
+  <link rel="stylesheet" href="./css/all.min.css">
+  <link rel="stylesheet" href="./css/animation.css">
+  <link rel="stylesheet" href="./css/main.css">
+</head>
+
+<body data-spy="scroll" data-target="#navbar-example" data-offset="0">
+  <nav id="navbar-example" class="navbar navbar-expand-lg navbar-dark main-bg">
+    <div class="container py-5">
+      <a class="navbar-brand d-flex align-items-center" href="#">
+        <img src="./img/logo@2x.png" alt="" class="object-fit-contain" style="height:70px ; width: 70px;">
+        <div class="text-white ps-2 pt-2">
+          <h1 class="fa-xs ">Weather</h1>
+          <p class="fa-2xs text-white-50 pt-2">tagline goes here</p>
+        </div>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse " id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active rounded-pill fa-1xs" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link rounded-pill fa-1xs" aria-current="page" href="#">News</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link rounded-pill fa-1xs" aria-current="page" href="#">Live Cameras</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link rounded-pill fa-1xs" aria-current="page" href="#">Photos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link rounded-pill fa-1xs" aria-current="page" href="#">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section class="main-bg">
+    <div class="bg-img py-5">
+      <!-- search forcast -->
+      <div class="container input-group  py-5">
+        <input type="text"
+          class="form-control position-relative p-3 rounded-pill z-1 border-0 shadow-none text-white main-bg"
+          id="searchI" placeholder="Find your location..." aria-label="Recipient's username"
+          aria-describedby="button-addon2">
+        <button class="btn bg-blue text-white rounded-pill position-absolute end-0 py-2 px-4 mt-2 me-3 z-3"
+          type="button" id="button-addon2">Find</button>
+        <div class="invalid-tooltip ms-3" style="top: 65% !important;">
+          Please enter a valid location
+        </div>
+      </div>
+      <!-- data forcast -->
+      <div class="container row m-auto p-4 sizing">
+        <div class="card col-md-4 p-0 border-0 rounded-0 rounded-start text-white"
+          style="background-color: #323544 !important;">
+          <h5 id="currentDay" class="card-header border-0 d-flex justify-content-between align-items-center px-2"
+            style="background-color: #0000001A !important;">
+            <span class="header-card">Sunday</span>
+            <span class="header-card">7December</span>
+          </h5>
+          <div class="card-body d-flex flex-column px-3">
+            <h5 class="header-card display-6" id="location">Alexndria</h5>
+            <span class="display-1 fw-bold pt-2 numTemp">20.4°C</span>
+            <div class="card-img mt-5">
+              <img src="./img/cloudyrain.png" alt="cloudyrain" class="w-100">
+            </div>
+            <span class="card-temp-text mt-3 mb-2 fw-normal">cloudy rain</span>
+            <div class="d-flex header-card mt-2 pb-2">
+              <span class="d-flex me-2 align-items-center"><i class="fs-5 fa-sharp-duotone fa-solid fa-umbrella me-1"></i><small class="fa-1xs">20%</small></span>
+              <span class="d-flex me-2  align-items-center"><i class="fs-5 fa-duotone fa-solid fa-wind me-1"></i><small class="fa-1xs">18km/h</small></span>
+              <span class="d-flex  align-items-center"><i class="fs-5 fa-sharp-duotone fa-solid fa-compass me-1"></i><small class="fa-1xs">East</small></span>
+            </div>
+          </div>
+        </div>
+        <div class="card col-md-4 p-0 rounded-0 border-0 text-white sec-bg">
+          <h5 class="card-header text-center border-0" style="background-color: #0000001A !important;"><span
+              class="header-card">Sunday</span></h5>
+          <div class=" d-flex flex-column px-3 align-items-center">
+            <div class="card-img mt-5 ms-0">
+              <img src="./img/cloudy.png" alt="cloudyrain" class="w-50">
+            </div>
+            <span class="fs-4 fw-bold  numTemp">22.3°C</span>
+            <span class="header-card minTemp">4.7°</span>
+            <span class="card-temp-text mt-3 mb-2 fw-normal">Partly Cloudy</span>
+          </div>
+        </div>
+        <div class="card col-md-4 p-0 border-0 text-white rounded-0 rounded-end"
+          style="background-color: #323544 !important;">
+          <h5 class="card-header text-center border-0" style="background-color: #0000001A !important;"><span
+              class="header-card">Monday</span></h5>
+              <div class=" d-flex flex-column px-3 align-items-center">
+                <div class="card-img mt-5 ms-0">
+                  <img src="./img/sun.png" alt="cloudyrain" class="w-50">
+                </div>
+                <span class="fs-4 fw-bold  numTemp">24.78°C</span>
+                <span class="header-card minTemp">12°</span>
+                <span class="card-temp-text mt-3 mb-2 fw-normal">clear</span>
+              </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer class="sec-bg pb-5">
+    <div class="container">
+      <div class=" input-group  pt-5 pb-4 row g-3 g-md-0">
+        <div class="col-md-8 me-md-5  position-relative">
+          <input type="text" class="form-control  p-3 rounded-pill z-1 border-0 shadow-none text-white main-bg"
+            placeholder="Enter youe email to subscribe..." aria-label="Recipient's username"
+            aria-describedby="button-addon2">
+          <button class="btn bg-blue text-white rounded-pill position-absolute top-0 end-0 py-2 px-4 me-2 mt-2"
+            type="button" id="button-addon2">subscribe</button>
+        </div>
+        <div class="col-md-2 ms-md-5 d-flex justify-content-md-center">
+          <i class="icon fa-brands fa-facebook-f"></i>
+          <i class="icon fa-brands fa-twitter"></i>
+          <i class="icon fa-brands fa-google-plus-g"></i>
+          <i class="icon fa-brands fa-pinterest-p"></i>
+        </div>
+      </div>
+      <p class="text-white-50 m-0 pb-4">Copyright 2014 Company name. Designed by Themezy. All rights reserved</p>
+    </div>
+  </footer>
+  <!-- main js -->
+  <script src="./js/main.js"></script>
+  <!-- bootstrap js -->
+  <script src="./js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

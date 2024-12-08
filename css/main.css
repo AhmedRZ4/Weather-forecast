@@ -1,0 +1,73 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto", sans-serif;
+}
+nav ul a{
+    border: 2px solid transparent !important;
+    padding: .25rem 1.5rem !important;
+    margin-right: .4rem !important;
+}
+nav ul a.active , nav ul a:hover , nav button:hover{
+    color: #009AD8 !important;
+    border-color: #009AD8 !important;
+}
+.bg-img{
+    background-image: url(../img/banner.png);
+    background-blend-mode: overlay;
+    background-repeat: no-repeat;
+}
+::placeholder{
+    color: rgb(193, 190, 190) !important;
+    font-size: small;
+}
+.icon{
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    background-color: #1E202B;
+    color: #009AD8;
+    border-radius: 50% 50%;
+    text-align: center;
+    align-content: center;
+    margin-right: .3rem;
+    font-size: 1.2rem;
+}
+.icon:hover{
+    color: white;
+    background-color: #009AD8;
+}
+.main-bg{
+    background-color: #1E202B !important;
+}
+.sec-bg{
+    background-color: #262936 !important ;
+}
+.text-main-color{
+    color: #009AD8 !important; 
+}
+.bg-blue{
+    background-color: #009AD8 !important; 
+}
+.header-card{
+    color: #BFC1C8 ;
+    font-size: 1rem;
+    font-weight:400;
+}
+.card-img{
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    align-content: center;
+    margin-left: 2rem;
+    font-size: 1.2rem;
+    object-fit: contain;
+}
+.card-temp-text{
+color: #009AD8;
+font-weight: 300;
+font-size: 1rem;
+}
+.sizing{
+    box-sizing: border-box;
+}
