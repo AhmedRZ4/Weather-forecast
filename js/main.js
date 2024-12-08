@@ -17,14 +17,14 @@ const minTemp = document.querySelectorAll("section .minTemp");
 searchI.addEventListener("input", () => {
     // check input
     if (regex.test(searchI.value)) {
-        fetch(`http://api.weatherapi.com/v1/search.json?key=2d2f1da43ff4448196e144621240612&q=${searchI.value}`, { method: "GET" })
+        fetch(`https://api.weatherapi.com/v1/search.json?key=2d2f1da43ff4448196e144621240612&q=${searchI.value}`, { method: "GET" })
             .then(p => { return p.json(); })
             .then(n => {
                 if (n[0] != null) {
                     idCountry = Number(n[0].id);
                     // get forecast
                     if (idCountry != null) {
-                        fetch(`http://api.weatherapi.com/v1/forecast.json?key=2d2f1da43ff4448196e144621240612&q=id:${idCountry}&days=3`
+                        fetch(`https://api.weatherapi.com/v1/forecast.json?key=2d2f1da43ff4448196e144621240612&q=id:${idCountry}&days=3`
                             , { method: "GET" }
                         ).then(e => {
                             if (e.status >= 200 && e.status <= 299) {
@@ -55,12 +55,12 @@ searchI.addEventListener("input", () => {
 // get current location
 window.addEventListener("load", () => {
     if (navigator.onLine == true) {
-        fetch('http://ip-api.com/json/')
+        fetch('https://ip-api.com/json/')
             .then(response => {
                 if (response.ok) {
                     response.json()
                         .then(data => {
-                            fetch(`http://api.weatherapi.com/v1/forecast.json?key=2d2f1da43ff4448196e144621240612&q=${Number(data.lat)},${Number(data.lon)}&days=3`
+                            fetch(`https://api.weatherapi.com/v1/forecast.json?key=2d2f1da43ff4448196e144621240612&q=${Number(data.lat)},${Number(data.lon)}&days=3`
                                 , { method: "GET" }
                             ).then(e => {
                                 if (e.status >= 200 && e.status <= 299) {
