@@ -16,6 +16,13 @@ const daysText = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Frida
 const minTemp = document.querySelectorAll("section .minTemp");
 searchI.addEventListener("input", () => {
     // check input
+    searchLocation()
+});
+document.getElementById("button-addon2").addEventListener("click", () => {
+    searchLocation()
+});
+// get by location
+function searchLocation(){
     if (regex.test(searchI.value)) {
         fetch(`https://api.weatherapi.com/v1/search.json?key=2d2f1da43ff4448196e144621240612&q=${searchI.value}`, { method: "GET" })
             .then(p => { return p.json(); })
@@ -51,16 +58,17 @@ searchI.addEventListener("input", () => {
         validatation.classList.add("d-block");
         validatation.classList.remove("d-none");
     }
-});
+}
+
 // get current location
 window.addEventListener("load", () => {
     if (navigator.onLine == true) {
-        getLocation()
+        getLocation();
     }
 });
 function display(obj) {
     //set location
-    locationC.innerHTML = (obj.location.name != "" ? (obj.location.name + ", ") : "") + (obj.location.region != "" ? (obj.location.region + ", ") : "") + (obj.location.country?obj.location.country:"")
+    locationC.innerHTML = (obj.location.name != "" ? (obj.location.name + ", ") : "") + (obj.location.region != "" ? (obj.location.region + ", ") : "") + (obj.location.country ? obj.location.country : "")
     //set images
     imgs[0].src = obj.current.condition.icon;
     imgs[1].src = obj.forecast.forecastday[1].day.condition.icon;
@@ -90,11 +98,27 @@ function display(obj) {
 // current location
 function getLocation() {
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
+        navigator.geolocation.getCurrentPosition(showPosition,defaulttLoc);
     }
 }
 function showPosition(position) {
     fetch(`https://api.weatherapi.com/v1/forecast.json?key=2d2f1da43ff4448196e144621240612&q=${Number(position.coords.latitude)},${Number(position.coords.longitude)}&days=3`
+        , { method: "GET" }
+    ).then(e => {
+        if (e.status >= 200 && e.status <= 299) {
+            return e.json();
+        }
+    }).then(o => {
+        display(o);
+    })
+        .catch(error => {
+            window.alert("Please enter a valid location");
+        });
+}
+
+
+function defaulttLoc() {
+    fetch(`https://api.weatherapi.com/v1/forecast.json?key=2d2f1da43ff4448196e144621240612&q=31.1977,29.8925&days=3`
         , { method: "GET" }
     ).then(e => {
         if (e.status >= 200 && e.status <= 299) {
