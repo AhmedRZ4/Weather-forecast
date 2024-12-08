@@ -46,7 +46,7 @@ searchI.addEventListener("input", () => {
                 validatation.classList.remove("d-block");
             }
             )
-            .catch(error => { console.log("out --- " + error) });     
+            .catch(error => { console.log("out --- " + error) });
     } else {
         validatation.classList.add("d-block");
         validatation.classList.remove("d-none");
@@ -55,30 +55,7 @@ searchI.addEventListener("input", () => {
 // get current location
 window.addEventListener("load", () => {
     if (navigator.onLine == true) {
-        fetch('https://ip-api.com/json/')
-            .then(response => {
-                if (response.ok) {
-                    response.json()
-                        .then(data => {
-                            fetch(`https://api.weatherapi.com/v1/forecast.json?key=2d2f1da43ff4448196e144621240612&q=${Number(data.lat)},${Number(data.lon)}&days=3`
-                                , { method: "GET" }
-                            ).then(e => {
-                                if (e.status >= 200 && e.status <= 299) {
-                                    return e.json();
-                                }
-                            }).then(o => {
-                                display(o);
-                            })
-                                .catch(error => {
-                                    window.alert("Please enter a valid location");
-                                });
-                        })
-                }
-            }
-            )
-            .catch(error => {
-                window.alert("Offline ");
-            });
+        getLocation()
     }
 });
 function display(obj) {
@@ -110,3 +87,27 @@ function display(obj) {
     days[2].innerHTML = daysText[(new Date(obj.forecast.forecastday[1].date)).getDay()];
     days[3].innerHTML = daysText[(new Date(obj.forecast.forecastday[2].date)).getDay()];
 }
+// current location
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    }
+}
+function showPosition(position) {
+    fetch(`https://api.weatherapi.com/v1/forecast.json?key=2d2f1da43ff4448196e144621240612&q=${Number(position.coords.latitude)},${Number(position.coords.longitude)}&days=3`
+        , { method: "GET" }
+    ).then(e => {
+        if (e.status >= 200 && e.status <= 299) {
+            return e.json();
+        }
+    }).then(o => {
+        display(o);
+    })
+        .catch(error => {
+            window.alert("Please enter a valid location");
+        });
+}
+
+
+
+
