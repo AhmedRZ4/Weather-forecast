@@ -2,7 +2,7 @@
 //http://api.weatherapi.com/v1/search.json?key=2d2f1da43ff4448196e144621240612&q=new
 //http://api.weatherapi.com/v1/forecast.json?key=2d2f1da43ff4448196e144621240612&q=-15.21,-75.11&days=3
 const searchI = document.getElementById("searchI");
-const regex = /^[a-zA-Z1-9]+((, | ,| , | |,){1}[a-zA-Z1-9]+)*$/
+const regex = /^[a-zA-Z\u0600-\u06FF1-9]+((, | ,| , | |,){1}[a-zA-Z\u0600-\u06FF1-9]+)*$/
 const validatation = document.querySelector("section .invalid-tooltip");
 let idCountry;
 const imgs = document.querySelectorAll("section img");
@@ -68,7 +68,7 @@ window.addEventListener("load", () => {
 });
 function display(obj) {
     //set location
-    locationC.innerHTML =(obj.location.region != "" ? (obj.location.region + ", ") : "") + (obj.location.country ? obj.location.country : "")
+    locationC.innerHTML =(obj.location.name != "" ? (obj.location.name + ", ") : "")+(obj.location.region != "" ? (obj.location.region + ", ") : "") + (obj.location.country ? obj.location.country : "")
     //set images
     imgs[0].src = obj.current.condition.icon;
     imgs[1].src = obj.forecast.forecastday[1].day.condition.icon;
