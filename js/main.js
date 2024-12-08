@@ -68,7 +68,7 @@ window.addEventListener("load", () => {
 });
 function display(obj) {
     //set location
-    locationC.innerHTML = (obj.location.name != "" ? (obj.location.name + ", ") : "") + (obj.location.region != "" ? (obj.location.region + ", ") : "") + (obj.location.country ? obj.location.country : "")
+    locationC.innerHTML =(obj.location.region != "" ? (obj.location.region + ", ") : "") + (obj.location.country ? obj.location.country : "")
     //set images
     imgs[0].src = obj.current.condition.icon;
     imgs[1].src = obj.forecast.forecastday[1].day.condition.icon;
